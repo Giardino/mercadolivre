@@ -62,11 +62,13 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    implementation(libs.hilt.android.v248)
+    kapt(libs.hilt.android.compiler.v248)
 
     implementation(libs.retrofit)
-
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+    implementation(libs.okhttp)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -75,6 +77,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
 }
 
 kapt {
