@@ -6,7 +6,7 @@
 
 ## Information ##
 
-Projeto Mobile Mercadolivre   
+Projeto Mobile Mercadolivre
 
 ## Objective ##
 
@@ -44,10 +44,9 @@ $ git clone git@github.com:Giardino/mercadolivre.git
 
 ## Structure ##
 
-Estrutura de pastas de projeto  
+Estrutura de pastas de projeto
 
 
-|---|---|
 | Pastas/Arquivo | Informações |
 |---|---|
 | \data |  |
@@ -61,19 +60,18 @@ Estrutura de pastas de projeto
 | \presentation\state | State Projeto |
 | \presentation\ui | UI Projeto |
 | \di | |
-|---|---|
 
 ## Information ##
 
-Abra o projeto no Android Studio.  
+Abra o projeto no Android Studio.
 
 [<img src="images/image-003.png" width="1024"/>](image-003.png)
 
-Sincronize o Gradle para baixar todas as dependências.  
+Sincronize o Gradle para baixar todas as dependências.
 
 [<img src="images/image-004.png" width="1024"/>](image-004.png)
 
-Conecte seu dispositivo ou emulador Android e execute o projeto.  
+Conecte seu dispositivo ou emulador Android e execute o projeto.
 
 [<img src="images/image-005.png" width="1024"/>](image-005.png)
 
@@ -99,5 +97,11 @@ luciano.giardino@gmail.com
 
 ## Links ##
 
-https://kotlinlang.org/
+https://kotlinlang.org/  
 https://developer.android.com/kotlin?hl=pt-br
+
+Reference
+
+https://api.mercadolibre.com/items/MLB3495868777  
+https://api.mercadolibre.com/items/MLB3495868777/description  
+https://api.mercadolibre.com/items/MLB3495868777/pictures  
