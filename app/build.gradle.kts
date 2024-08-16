@@ -64,6 +64,10 @@ dependencies {
 
     implementation(libs.hilt.android.v248)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
     kapt(libs.hilt.android.compiler.v248)
 
     implementation(libs.retrofit)

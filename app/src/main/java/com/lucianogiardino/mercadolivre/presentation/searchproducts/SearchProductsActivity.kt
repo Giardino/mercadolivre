@@ -1,6 +1,7 @@
 package com.lucianogiardino.mercadolivre.presentation.searchproducts
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.ComponentActivity
@@ -8,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,11 +44,14 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.lifecycle.ViewModel
 import coil.compose.AsyncImage
+import com.google.gson.Gson
 import com.lucianogiardino.mercadolivre.domain.model.ProductModel
 import com.lucianogiardino.mercadolivre.presentation.StateUI
+import com.lucianogiardino.mercadolivre.presentation.productdetail.ProductDetailActivity
 
 
 @AndroidEntryPoint
@@ -122,10 +127,10 @@ fun SearchProductsScreen(viewModel: SearchProductsViewModel) {
                     CenteredCircularProgressIndicator()
                 }
                 is StateUI.Success -> {
-                    ProductsListContent(products = (productsState as StateUI.Success<List<ProductModel>>).data)
+                    ProductsListContent(products = (productsState as StateUI.Success<List<ProductModel>>).data, context)
                 }
                 is StateUI.Error -> {
-
+                    Text("Ops! tivemos algum problema, tente novamente mais tarde")
                 }
             }
 
@@ -135,12 +140,12 @@ fun SearchProductsScreen(viewModel: SearchProductsViewModel) {
 }
 
 @Composable
-fun ProductsListContent(products: List<ProductModel>){
+fun ProductsListContent(products: List<ProductModel>, context: Context){
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp), // Margem externa do card
+            .padding(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
@@ -148,14 +153,23 @@ fun ProductsListContent(products: List<ProductModel>){
     ) {
 
         LazyVerticalGrid(
-            columns = GridCells.Fixed(2), // Define 2 colunas no grid
+            columns = GridCells.Fixed(2),
             modifier = Modifier
-                .padding(16.dp) // Padding interno do card
+                .padding(16.dp)
         ) {
             items(products.size) { index ->
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.padding(8.dp)
+                        .clickable {
+                            val gson = Gson()
+                            val productJson = gson.toJson(products[index])
+                            val intent = Intent(context, ProductDetailActivity::class.java).apply {
+                                putExtra("product", productJson)
+                            }
+                            context.startActivity(intent)
+                        },
+
                 ) {
                     AsyncImage(
                         model = products[index].thumbnail,
@@ -172,13 +186,27 @@ fun ProductsListContent(products: List<ProductModel>){
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    if (products[index].originalPrice != 0.0){
+                        Text(
+                            text = "R$ ${products[index].originalPrice}",
+                            style = MaterialTheme.typography.labelSmall.copy(
+                                textDecoration = TextDecoration.LineThrough // Aplica o efeito riscado
+                            ),
+                            color = Color.Black,
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                    }
+
                     Text(
                         text = "R$ ${products[index].price}",
                         style = MaterialTheme.typography.titleSmall,
                         color = Color.Black,
-                        modifier = Modifier.align(Alignment.Start)
                     )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
                 }
             }
         }
