@@ -79,6 +79,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.coil.compose)
 
+    testImplementation (libs.mockito.core)
+    testImplementation (libs.mockito.inline)
+
+    testImplementation (libs.kotlinx.coroutines.test)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -86,8 +91,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation (libs.kotlin.test)
 
-
+    androidTestImplementation (libs.hilt.android.testing)
+    kaptAndroidTest (libs.hilt.compiler)
 }
 
 kapt {
