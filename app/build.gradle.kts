@@ -63,12 +63,17 @@ dependencies {
     implementation(libs.androidx.material3)
 
     implementation(libs.hilt.android.v248)
+    implementation(libs.androidx.runtime.livedata)
     kapt(libs.hilt.android.compiler.v248)
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
     implementation(libs.okhttp)
+
+    implementation(libs.ui)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.coil.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

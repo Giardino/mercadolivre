@@ -1,4 +1,4 @@
-package com.lucianogiardino.mercadolivre.ui.theme
+package com.lucianogiardino.mercadolivre.presentation.theme
 
 import android.app.Activity
 import android.os.Build
@@ -19,7 +19,7 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
+    primary = Yellow,
     secondary = PurpleGrey40,
     tertiary = Pink40,
     background = Color(0xFFFFFBFE),
@@ -36,7 +36,7 @@ private val LightColorScheme = lightColorScheme(
 fun MercadolivreTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
