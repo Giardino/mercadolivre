@@ -1,4 +1,4 @@
-package com.lucianogiardino.mercadolivre
+package com.lucianogiardino.mercadolivre.presentation.searchproducts
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.lucianogiardino.mercadolivre.ui.theme.MercadolivreTheme
+import com.lucianogiardino.mercadolivre.presentation.theme.MercadolivreTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
